@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <app-volver-boton></app-volver-boton>
+    <ion-title>Crear Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nombre de la Clase</ion-label>
+    <ion-input [(ngModel)]="className"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="createClass()">Crear Clase</ion-button>
+
+  <!-- Mostrar el QR una vez que sea generado -->
+  <div *ngIf="qrCodeUrl">
+    <img [src]="qrCodeUrl" alt="QR Code">
+  </div>
+
+  <!-- Mostrar el classID -->
+  <div *ngIf="classID">
+    ID de la Clase: {{ classID }}
+  </div>
+</ion-content>
