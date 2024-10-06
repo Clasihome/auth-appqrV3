@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,17 @@ export class AuthService {
     return this.angularFireAuth.signInWithEmailAndPassword(email, password);
   }
 
-  async register(email: string, password: string,  ) {
-    return this.angularFireAuth.createUserWithEmailAndPassword(email, password, );
+  async register(email: string, password: string) {
+    return this.angularFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
   async logout() {
-    return this.angularFireAuth.signOut;
+    return this.angularFireAuth.signOut();
   }
 
-  async getUser() {
-    return this.angularFireAuth.user;
+  // Cambiamos el método getUser a getCurrentUser
+  async getCurrentUser(): Promise<any> {
+    const user = await this.angularFireAuth.currentUser; // Obtiene el usuario actual
+    return user; // Devuelve el usuario
   }
-
-
 }

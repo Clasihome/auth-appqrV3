@@ -1,8 +1,7 @@
 <ion-header [translucent]="true">
-  
   <ion-toolbar>
     <app-volver-boton></app-volver-boton>
-    <ion-title>scan</ion-title>
+    <ion-title>Scan</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,35 +9,41 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Escaneo de Clase</ion-title>
-
     </ion-toolbar>
   </ion-header>
 
-
   <div class="segment">
-
     <div class="segment-content">
-      <img  src="assets/images/scan-qr.webp" alt="">
+      <img src="assets/images/scan-qr.webp" alt="">
       <h6 class="scan-label">Escanee un QR</h6>
 
       <ion-row>
         <ion-col size="12">
-          <ion-button (click)="startScan()" class="submit"  expand="block" >
+          <ion-button (click)="startScan()" class="submit" expand="block">
             Scan
             <ion-icon slot="end" name="scan-outline"></ion-icon>
           </ion-button>
         </ion-col>
+        
       </ion-row>
 
       <ion-item class="result" *ngIf="scanResult" lines="none"> 
         <ion-label>
           <p>Scan Result</p>
           <div>{{scanResult}}</div>
-          
         </ion-label>
       </ion-item>
 
-    </div>
+      <!-- Botón para registrar asistencia -->
+      <ion-row>
+        <ion-col size="12" *ngIf="scanResult">
+          <ion-button (click)="registrarAsistencia(scanResult)" class="submit" expand="block">
+            Registrar Asistencia
+            <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
 
+    </div>
   </div>
 </ion-content>
